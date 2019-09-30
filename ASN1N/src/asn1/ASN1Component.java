@@ -123,8 +123,7 @@ public class ASN1Component extends ASN1Data {
 	 * @return the first component found in the passed ASN.1 data.
 	 */
 	public static ASN1Component retrieveComponent (ASN1Data asn1Data) {
-		
-		return (new ASN1Component(getFirstComponent(asn1Data), "UNKNOWN "));
+		return (new ASN1Component(getFirstComponent(asn1Data), "UNKNOWN"));
 	}
 	
 	/**
@@ -337,7 +336,7 @@ public class ASN1Component extends ASN1Data {
 			
 			return (output.append(tabs + "}\n").toString());
 		} else {
-			return (tabs + this.name + this.contents.toString() + "\n");
+			return (tabs + this.name + " " + this.contents.toString() + "\n");
 		}
 	}
 	

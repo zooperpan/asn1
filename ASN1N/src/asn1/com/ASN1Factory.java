@@ -182,6 +182,18 @@ public class ASN1Factory implements ASN1Definitions {
 			ASN1VisibleString asn1VisibleString = new ASN1VisibleString(asn1Component.getAllASN1Data(), "VISIBLESTRING");
 			return asn1VisibleString;
 		default:
+			switch(asn1Component.getTag() & MASK_CLASS) {
+			case APPLICATION:
+				asn1Component.setName("[APPLICATION " + (asn1Component.getTag() & MASK_ASN1_TAG) + "]");
+				break;
+			case CONTEXT:
+				asn1Component.setName("[CONTEXT " + (asn1Component.getTag() & MASK_ASN1_TAG) + "]");
+				break;
+			case PRIVATE:
+				asn1Component.setName("[PRIVATE " + (asn1Component.getTag() & MASK_ASN1_TAG) + "]");
+				break;
+			default: break;
+			}
 			break;
 		}
 		return asn1Component;
