@@ -135,4 +135,55 @@ public class ASN1Factory implements ASN1Definitions {
 		}
 		return null;
 	}
+	
+	public static ASN1Component getComponent (ASN1Data asn1Data) {
+		
+		ASN1Component asn1Component =  ASN1Component.retrieveComponent(asn1Data);
+		switch (asn1Component.getTag()) {
+		case ASN1_TAG_BOOLEAN:
+			ASN1Boolean asn1Boolean = new ASN1Boolean(asn1Component.getAllASN1Data(), "BOOLEAN");
+			return asn1Boolean;
+		case ASN1_TAG_INT:
+			ASN1Integer asn1Integer = new ASN1Integer(asn1Component.getAllASN1Data(), "INTEGER");
+			return asn1Integer;
+		case ASN1_TAG_BIT_STR:
+		case ASN1_TAG_BIT_STR | CONSTRUCTED:
+			ASN1BitString asn1BitString = new ASN1BitString(asn1Component.getAllASN1Data(), "BITSTRING");
+			return asn1BitString;
+		case ASN1_TAG_OCTET_STR:
+		case ASN1_TAG_OCTET_STR | CONSTRUCTED:
+			ASN1OctetString asn1OctetString = new ASN1OctetString(asn1Component.getAllASN1Data(), "OCTETSTRING");
+			return asn1OctetString;
+		case ASN1_TAG_NULL:
+			ASN1Null asn1Null = new ASN1Null(asn1Component.getAllASN1Data(), "NULL");
+			return asn1Null;
+		case ASN1_TAG_OBJ_ID:
+			ASN1ObjectID asn1ObjectID = new ASN1ObjectID(asn1Component.getAllASN1Data(), "OBJECTID");
+			return asn1ObjectID;
+		case ASN1_TAG_ENUM:
+			ASN1Enumerated asn1Enumerated = new ASN1Enumerated(asn1Component.getAllASN1Data(), "ENUMERATION");
+			return asn1Enumerated;
+		case ASN1_TAG_SEQ | CONSTRUCTED:
+			ASN1Sequence asn1Sequence = new ASN1Sequence(asn1Component.getAllASN1Data(), "SEQUENCE");
+			return asn1Sequence;
+		case ASN1_TAG_SET | CONSTRUCTED:
+			ASN1Set asn1Set = new ASN1Set(asn1Component.getAllASN1Data(), "SET");
+			return asn1Set;
+		case ASN1_TAG_NUM_STR:
+		case ASN1_TAG_NUM_STR | CONSTRUCTED:
+			ASN1NumericString asn1NumericString = new ASN1NumericString(asn1Component.getAllASN1Data(), "NUMERICSTRING");
+			return asn1NumericString;
+		case ASN1_TAG_IA5_STR:
+		case ASN1_TAG_IA5_STR | CONSTRUCTED:
+			ASN1IA5String asn1IA5String = new ASN1IA5String(asn1Component.getAllASN1Data(), "IA5STRING");
+			return asn1IA5String;
+		case ASN1_TAG_VIS_STR:
+		case ASN1_TAG_VIS_STR | CONSTRUCTED:
+			ASN1VisibleString asn1VisibleString = new ASN1VisibleString(asn1Component.getAllASN1Data(), "VISIBLESTRING");
+			return asn1VisibleString;
+		default:
+			break;
+		}
+		return asn1Component;
+	}
 }

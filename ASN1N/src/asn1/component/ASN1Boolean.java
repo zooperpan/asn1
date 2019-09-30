@@ -30,6 +30,14 @@ public class ASN1Boolean extends ASN1Component {
 	}
 	
 	/**
+	 * Create a boolean component with the default tag
+	 * @param value The value of the boolean component
+	 */
+	public ASN1Boolean (boolean value, String name) {
+		this(ASN1_TAG_BOOLEAN, value, name);
+	}
+	
+	/**
 	 * Creates an {@link ASN1Boolean} component with the specific data including the tag and the length.
 	 * @param data - the data of the boolean component.
 	 * @param name - the name of the component.
@@ -111,7 +119,7 @@ public class ASN1Boolean extends ASN1Component {
 	 * @return a String object to be printed.
 	 */
 	public String printData (String tabs) {
-		return (tabs + getName() + this.value + "\n");
+		return (tabs + getName() + " " + this.value + "\n");
 	}
 	
 	/**

@@ -65,4 +65,17 @@ public abstract class ASN1Message {
 	public DataContainer getDataContainer () {
 		return null;
 	}
+	
+	/**
+	 * Prints all components of the message
+	 * @deprecated
+	 */
+	public void printMessage () {
+		
+		ASN1Component asn1Component;
+		for (int i = 0; i < this.components.size(); i++) {
+			asn1Component = this.components.get(i);
+			System.out.println(asn1Component.printData(""));
+		}
+	}
 }

@@ -30,6 +30,14 @@ public class ASN1VisibleString extends ASN1Component {
 	}
 	
 	/**
+	 * Create a visibleString component with the default tag
+	 * @param value The value of the visibleString component
+	 */
+	public ASN1VisibleString (String value, String name) {
+		this(ASN1_TAG_VIS_STR, value, name);
+	}
+	
+	/**
 	 * Creates an {@link ASN1VisibleString} component with the specific data including the tag and the length.
 	 * @param data - the data of the visible string component.
 	 * @param name - the name of the component.
@@ -124,7 +132,7 @@ public class ASN1VisibleString extends ASN1Component {
 		if (isConstructed()) {
 			return (super.printData(tabs));
 		} else {
-			return (tabs + getName() + this.value + "\n");
+			return (tabs + getName() + " " + this.value + "\n");
 		}
 	}
 	

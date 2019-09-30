@@ -30,6 +30,14 @@ public class ASN1IA5String extends ASN1Component {
 	}
 	
 	/**
+	 * Create a IA5String component with the default tag
+	 * @param value The value of the IA5String component
+	 */
+	public ASN1IA5String (String value, String name) {
+		this(ASN1_TAG_IA5_STR, value, name);
+	}
+	
+	/**
 	 * Creates an {@link ASN1IA5String} component with the specific data including the tag and the length.
 	 * @param data - the data of the IA5 string component.
 	 * @param name - the name of the component.
@@ -98,20 +106,29 @@ public class ASN1IA5String extends ASN1Component {
 	/**
 	 * Converts the value of the specified component to ASN1Data containing the tag
 	 * and the length of the component.
-	 * @param tag - the specified tag of the component
-	 * @param value - the value of the component
+	 * @param tag The specified tag of the component
+	 * @param value The value of the component
 	 * @return an ASN1Data object
 	 */
 	public static ASN1Data convertToASN1Data (short tag, String value) {
 		
+		StringBuffer output = new StringBuffer("");
+		String helpString = "";
 		ASN1Data asn1Data = new ASN1Data(1);
+		
+		for (int i = 0; i < value.length(); i++) {
+			char c = value.charAt(i);
+			helpString = Integer.toHexString((int)(c));
+			if (helpString.length() == 1) helpString = "0" + helpString;
+			output.append(helpString);
+		}
 		// *********************** Check number of length bytes start ***********************
-		int length = value.length() / 2;
-		asn1Data.setDataAtIndex((short) tag, TAG_INDEX);
+		int length = output.length() / 2;
+		asn1Data.setDataAtIndex(tag, TAG_INDEX);
 		asn1Data.addData(ASN1Component.convertLengthToASN1Data(length));
 		// ************************ Check number of length bytes end ************************
-		asn1Data.addData(value);
-		return (asn1Data);
+		asn1Data.addData(output.toString());
+		return asn1Data;
 	}
 	
 	/**
@@ -124,7 +141,7 @@ public class ASN1IA5String extends ASN1Component {
 		if (isConstructed()) {
 			return (super.printData(tabs));
 		} else {
-			return (tabs + getName() + this.value + "\n");
+			return (tabs + getName() + " " + this.value + "\n");
 		}
 	}
 	

@@ -30,6 +30,14 @@ public class ASN1ObjectID extends ASN1Component {
 	}
 	
 	/**
+	 * Create a objectID component with the default tag
+	 * @param value the value of the objectID component
+	 */
+	public ASN1ObjectID (int value[], String name) {
+		this(ASN1_TAG_OBJ_ID, value, name);
+	}
+	
+	/**
 	 * Creates an {@link ASN1ObjectID} component with the specific data including the tag and the length.
 	 * @param data - the data of the objectID component.
 	 * @param name - the name of the component.
@@ -208,7 +216,7 @@ public class ASN1ObjectID extends ASN1Component {
 	 * @return a String object to be printed
 	 */
 	private String toArrayString () {
-		StringBuffer output = new StringBuffer("{");
+		StringBuffer output = new StringBuffer(" {");
 		int length = this.value.length;
 		
 		for (int i = 0; i < length; i++) {

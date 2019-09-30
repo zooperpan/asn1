@@ -26,6 +26,14 @@ public class ASN1Sequence extends ASN1Component {
 	}
 	
 	/**
+	 * Create a sequence component with the default tag
+	 * @param value The value of the sequence component
+	 */
+	public ASN1Sequence (short value[], String name) {
+		this((short) (ASN1_TAG_SEQ | CONSTRUCTED), new ASN1Data(value), name);
+	}
+	
+	/**
 	 * Creates an {@link ASN1Sequence} component with the specific data including the tag and the length.
 	 * @param data - the data of the sequence component.
 	 * @param name - the name of the component.

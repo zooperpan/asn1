@@ -26,6 +26,14 @@ public class ASN1Set extends ASN1Component {
 	}
 	
 	/**
+	 * Create a set component with the default tag
+	 * @param value The value of the set component
+	 */
+	public ASN1Set (short value[], String name) {
+		this((short) (ASN1_TAG_SET | CONSTRUCTED), new ASN1Data(value), name);
+	}
+	
+	/**
 	 * Creates an {@link ASN1Set} component with the specific data including the tag and the length.
 	 * @param data - the data of the set component.
 	 * @param name - the name of the component.

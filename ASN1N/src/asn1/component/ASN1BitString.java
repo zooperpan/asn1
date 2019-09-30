@@ -34,6 +34,15 @@ public class ASN1BitString extends ASN1Component {
 	}
 	
 	/**
+	 * Create a bitString component with the default tag
+	 * @param unusedBits the unused bits of the last octet
+	 * @param value the value of the bitString component
+	 */
+	public ASN1BitString (short unusedBits, short value[], String name) {
+		this(ASN1_TAG_BIT_STR, unusedBits, value, name);
+	}
+	
+	/**
 	 * Creates an {@link ASN1BitString} component with the specific data including the tag and the length.
 	 * @param data - the data of the bitString component.
 	 * @param name - the name of the component.
@@ -150,7 +159,7 @@ public class ASN1BitString extends ASN1Component {
 		if (isConstructed()) {
 			return (super.printData(tabs));
 		} else {
-			return (tabs + getName() + toBitString() + " {" + getValueName() + "}\n");
+			return (tabs + getName() + " " + toBitString() + " {" + getValueName() + "}\n");
 		}
 	}
 	

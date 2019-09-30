@@ -30,6 +30,14 @@ public class ASN1Enumerated extends ASN1Component {
 	}
 	
 	/**
+	 * Create an enumerated component with the default tag
+	 * @param value The value of the enumerated component
+	 */
+	public ASN1Enumerated (long value, String name) {
+		this(ASN1_TAG_ENUM, value, name);
+	}
+	
+	/**
 	 * Creates an {@link ASN1Enumerated} component with the specific data including the tag and the length.
 	 * @param data - the data of the enumerated component.
 	 * @param name - the name of the component.
@@ -111,8 +119,8 @@ public class ASN1Enumerated extends ASN1Component {
 	 */
 	public String printData (String tabs) {
 		String valueName = getValueName(tabs);
-		if (valueName.length() != 0) return (tabs + getName() + valueName + "\n");
-		return (tabs + getName() + this.value + "\n");
+		if (valueName.length() != 0) return (tabs + getName() + " " + valueName + "\n");
+		return (tabs + getName() + " " + this.value + "\n");
 	}
 	
 	/**

@@ -324,7 +324,7 @@ public class ASN1Component extends ASN1Data {
 		if (isConstructed()) {
 			StringBuffer output = new StringBuffer();
 			ASN1Component asn1Component;
-			output.append(tabs + this.name + "{\n");
+			output.append(tabs + this.name + " {\n");
 			// Check if component could not be analyzed
 			if (components.size() == 0) {
 				output.append(tabs + TABS + this.getContents().toString() + "\n");

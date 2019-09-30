@@ -30,6 +30,14 @@ public class ASN1Integer extends ASN1Component {
 	}
 	
 	/**
+	 * Create an integer component with the default tag
+	 * @param value The value of the integer component
+	 */
+	public ASN1Integer (long value, String name) {
+		this(ASN1_TAG_INT, value, name);
+	}
+	
+	/**
 	 * Creates an {@link ASN1Integer} component with the specific data including the tag and the length.
 	 * @param data - the data of the integer component.
 	 * @param name - the name of the component.
@@ -127,8 +135,8 @@ public class ASN1Integer extends ASN1Component {
 	 */
 	public String printData (String tabs) {
 		String valueName = getValueName(tabs);
-		if (valueName.length() != 0) return (tabs + getName() + valueName + "\n");
-		else return (tabs + getName() + this.value + "\n");
+		if (valueName.length() != 0) return (tabs + getName() + " " + valueName + "\n");
+		else return (tabs + getName() + " " + this.value + "\n");
 	}
 	
 	/**

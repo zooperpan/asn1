@@ -32,6 +32,15 @@ public class ASN1OctetString extends ASN1Component {
 	}
 	
 	/**
+	 * Create an octetString component with the default tag
+	 * @param unusedBits the unused bits of the last octet
+	 * @param value the value of the octetString component
+	 */
+	public ASN1OctetString (String value, String name) {
+		this(ASN1_TAG_OCTET_STR, value, name);
+	}
+	
+	/**
 	 * Creates an {@link ASN1OctetString} component with the specific data including the tag and the length.
 	 * @param data - the data of the octet string component.
 	 * @param name - the name of the component.
@@ -118,7 +127,7 @@ public class ASN1OctetString extends ASN1Component {
 		if (isConstructed()) {
 			return (super.printData(tabs));
 		} else {
-			return (tabs + getName() + this.value + "\n");
+			return (tabs + getName() + " " + this.value + "\n");
 		}
 	}
 	

@@ -26,6 +26,13 @@ public class ASN1Null extends ASN1Component {
 	}
 	
 	/**
+	 * Create a null component with the default tag
+	 */
+	public ASN1Null (String name) {
+		this(ASN1_TAG_NULL, name);
+	}
+	
+	/**
 	 * Creates an {@link ASN1Null} component with the specific data including the tag and the length.
 	 * @param data - the data of the null component.
 	 * @param name - the name of the component.
